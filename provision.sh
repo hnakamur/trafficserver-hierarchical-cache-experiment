@@ -142,7 +142,7 @@ sudo sed '
 /^CONFIG proxy.config.http.insert_response_via_str INT/s/0/3/
 $a\
 \
-CONIFG proxy.config.admin.synthetic_port INT 8083\
+CONFIG proxy.config.admin.synthetic_port INT 8083\
 CONFIG proxy.config.process_manager.mgmt_port INT 8084\
 \
 # Enable the custom logging\
