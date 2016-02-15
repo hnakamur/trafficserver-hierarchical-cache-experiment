@@ -119,6 +119,7 @@ EOF
 
 sudo sed '
 /^CONFIG proxy.config.diags.debug.enabled INT/s/0/1/
+/^CONFIG proxy.config.diags.debug.tags STRING/s/http\.\*|dns\.\*/http\.\*|dns\.\*|ui\.\*/
 /^CONFIG proxy.config.http.server_ports STRING/s/8080/80/
 /^CONFIG proxy.config.http.parent_proxy_routing_enable INT/s/0/1/
 /^CONFIG proxy.config.http.insert_response_via_str INT/s/0/3/
@@ -137,8 +138,12 @@ CONFIG proxy.config.http.response_via_str STRING ApacheTrafficServer-first
 
 sudo sed '
 /^CONFIG proxy.config.diags.debug.enabled INT/s/0/1/
+/^CONFIG proxy.config.diags.debug.tags STRING/s/http\.\*|dns\.\*/http\.\*|dns\.\*|ui\.\*/
 /^CONFIG proxy.config.http.insert_response_via_str INT/s/0/3/
 $a\
+\
+CONIFG proxy.config.admin.synthetic_port INT 8083\
+CONFIG proxy.config.process_manager.mgmt_port INT 8084\
 \
 # Enable the custom logging\
 #   https://docs.trafficserver.apache.org/en/latest/admin-guide/monitoring/logging/log-formats.en.html#custom-formats\
